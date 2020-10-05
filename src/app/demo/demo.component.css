@@ -1,0 +1,9 @@
+.dropdown-menu{
+  background-color: white;
+  text-align: center;
+}
+
+.dropdown-item{
+  font-size: 15px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

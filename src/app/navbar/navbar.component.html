@@ -1,0 +1,157 @@
+<div class="my-wrapper" >
+    <!--my-header menu start-->
+    <div class="my-header" >
+        <div class="my-header-menu">
+            <span class="title">DASHBOARD</span> 
+            <ul>
+                
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <span><br><em class="material-icons md-20 ">account_circle</em> <h3 style="color: white; font-size: smaller;">{{fname}}</h3></span>
+                  
+                  </button>
+                  <mat-menu #menu="matMenu">
+                      <button mat-menu-item type="button" data-toggle="modal" (click)="viewprofile()" data-target="#myModal"> View profile</button>
+                      <button mat-menu-item type="button" data-toggle="modal" (click)="editprofile()" data-target="#myModal">Edit profile</button>
+                    <button mat-menu-item (click)="signout()" >
+                      <span>Logout</span>
+                    </button>
+                  </mat-menu>
+            </ul>
+            
+        </div>
+    </div>
+    <!--my-header menu end-->
+    <!--sidebar start-->
+    <div class="sidebar" >
+        <div class="sidebar-menu">
+            <div class="centre">
+                <div class="dash">
+                      <button  (click)="home()" >  <h2>Home</h2></button>
+                </div>
+                <hr class="light">
+                <div class="dash">
+                        <button class="dash1" (click)="list()">Information</button>
+                </div>
+                <div>
+                    <div *ngIf="show_stock" class="sub-menu1">
+                      <div class="dash">
+                      <hr class="light">
+                      <button  class="sub-menu1" (click)="students()"> Students </button>
+                      </div>
+                      <div class="dash">
+                      <hr class="light">
+                      <button class="sub-menu1" (click)="books()"> Books </button>
+                      </div>
+                  </div>
+            </div>
+                <hr class="light">
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                    
+                        <!-- Modal content-->
+                        <div class="modal-content" style="background-color:transparent; width :600px">
+                        
+                          <div class="modal-body">
+<!--                       Profile Start                                      -->
+                            <div>
+                              <div class="my-wrap-login100 p-l-55 p-r-35 p-t-15 p-b-30" style="background-color: rgb(211, 211, 198);">
+                                <button type="button"  class="close btn btn-primary " style="color:rgb(245, 18, 18);float:right;" data-dismiss="modal" (click)="refresh()" >&times;</button>
+                                  <div class="login100-form validate-form" >
+                                    
+                        <!----------------------  Fill data  region     ------------------------------------>
+                                  <span class="login100-form-title p-b-33">
+                                    Welcome   <br>
+                                    </span>
+                                    <div class="col-25">
+                                      <label style="float: left;"> Name</label>
+                            </div>
+                            <div class="row">
+                                                              <div style="width:45%;float: left;">
+                                                                <input type="text" id="first_name" pattern="[a-zA-Z]{1,32}" class="form-control" name="first_name" placeholder="Enter first name" [(ngModel)]="model.first_name" #first_name = "ngModel" [ngClass]="{ 'is-invalid': (first_name.touched && first_name.invalid)||(first_name.dirty && first_name.invalid) }" [readonly]="view" required> 
+                                                                <div *ngIf="edit">
+                                                                <div *ngIf = "(first_name.touched && first_name.invalid)||(first_name.dirty && first_name.invalid)" class="error-msg">
+                                                                  <div *ngIf="first_name.errors.required"> Enter first name</div>
+                                                                  <div *ngIf="first_name.errors.pattern && !first_name.errors.required"> Invalid first name</div>
+                                                                </div>
+                                                                </div>                                  
+                                                              </div>
+                                                              <div style="width:45%;float: right;">
+                                                                <input style="width: 90%;" type="text" id="last_name" pattern="[a-zA-Z]{1,32}" class="form-control" name="last_name" placeholder="Enter last name" [(ngModel)]="model.last_name" #last_name = "ngModel" [ngClass]="{ 'is-invalid': (last_name.touched && last_name.invalid) && (last_name.dirty && last_name.invalid) }" [readonly]="view" required> 
+                                                                <div *ngIf="edit">
+                                                                <div *ngIf = "(last_name.touched && last_name.invalid) || (last_name.dirty && last_name.invalid)" class="error-msg">
+                                                                  <div *ngIf="last_name.errors.required">Enter last name </div>
+                                                                  <div *ngIf="last_name.errors.pattern && !last_name.errors.required"> Invalid last name</div>
+                                                                </div>            
+                                                                </div>       
+                                                          </div>
+                            </div>
+                          <!--------------             Email                       ---->
+                              <div class="col-25">
+                                  <label >Email</label>
+                              </div>
+                              <div class="col-75">
+                              <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email Id"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': (email.touched && email.invalid) || (email.dirty && email.invalid) }" [readonly]="view" required>
+                                        <div *ngIf="edit">
+                                        <div *ngIf = "(email.touched && email.invalid) || (email.dirty && email.invalid)" class="error-msg">
+                                          <div *ngIf="email.errors.required"> Email Id should be required </div>
+                                          <div *ngIf="email.errors.pattern" > Enter Valid Email... </div>
+                                        </div>
+                                        </div>
+                              </div>
+                              <!--------------             Mobile Number                      ---->
+                              <div class="col-25">
+                                <label >Mobile</label>
+                              </div>
+                              <div class="col-75">
+                                    <input type="text" id="mobile_no" class="form-control" name="mobile_no" placeholder="Enter Mobile Number"  pattern = "[0-9]+" maxlength = "10" minlength="10" [(ngModel)] ="model.mobile_no" #mobile_no="ngModel" [ngClass]="{ 'is-invalid' :mobile_no.touched && mobile_no.invalid }" [readonly]="view" required>
+          
+                                    <div *ngIf = "( mobile_no.touched && mobile_no.invalid ) && edit" class="invalid-feedback">
+                                        <div *ngIf="mobile_no.errors.required" > Mobile Number should be required </div>
+                                        <div *ngIf="mobile_no.errors.minlength || mobile_no.errors.maxlength" id="red"> Mobile Number should be 10 digit </div>    
+                                        <div *ngIf="mobile_no.errors.pattern" > Invalid Mobile Number </div>    
+          
+                                    </div>
+                              </div>
+                              <!--------------             Address                                 ---->
+                              <div class="col-25">
+                                  <label>Address</label>
+                              </div>
+                              <div class="col-75">
+                                  <input type="text" id="address" class="form-control" name="address" placeholder="Enter Address" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{'is-invalid':(address.touched && address.invalid) }" [readonly]="view" required>
+                                  <div *ngIf="edit">
+                                  <div *ngIf = "address.touched && address.invalid" class="error-msg">
+                                      <div *ngIf="address.errors.required"> Address should be required </div>
+                                  </div>
+                                  </div>
+                              </div>
+                              <!--               gender -->
+                              <div class="col-25">
+                                <label>Gender</label>
+                            </div>
+                              <div class="col-75">
+                                <input type="radio" value="male" name="gender" [ngModel]="model.gender" [disabled]="view"> Male
+                                <input type="radio" value="female" name="gender" [ngModel]="model.gender" [disabled]="view" > Female
+                                <br><br>
+                              </div>
+                               <!---------------- Submit   -->
+                               <div *ngIf="edit">
+                               <button type="submit" class="btn btn-primary"  style="float: left;" (click)="onSubmit()" 
+                               [disabled]="!first_name.valid || !last_name.valid || !email.valid || !mobile_no.valid || !address.valid" data-dismiss="modal">
+                               Submit</button>
+                               </div>
+                              </div>
+                        </div>
+                      </div>
+
+                      <!-- Ending of profile -->
+                </div>
+  </div>
+
+</div>
+</div>

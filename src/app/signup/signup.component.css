@@ -1,0 +1,61 @@
+/* Disabled button */
+button:disabled {
+  background-color: grey;
+}
+/* Radio button  */
+.radio{
+    display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* Labels or attributes  */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+/* text area after names */
+.col-75 {
+  float: left;
+  width: 65%;
+  height: 10%;
+  margin-top: 6px;
+}
+
+/* First name and last name in one row  */
+row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.col-5 {
+  float: right;
+  width: 25%;
+  margin-top: 6px;
+}
+/* Labels */
+.label{
+color: black;
+} 
+/* Placeholder colour */
+input::placeholder {
+  color: rgb(76, 79, 80);
+  font-size: smaller;
+}
+input{
+  background-color: rgba(228, 205, 205, 0.5);
+ }
+ /* Error message */
+ .err-msg {
+  color:rgb(201, 9, 41);
+  font-size: 12px;
+  padding: 5px;
+  text-align: left;
+}

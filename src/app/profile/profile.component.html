@@ -1,0 +1,87 @@
+<div>
+  <div class="my-wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50" style="background-color: beige;">
+      <div class="login100-form validate-form" >
+<!----------------------  Fill data  region     ------------------------------------>
+      <span class="login100-form-title p-b-33">
+        Welcome   <br>
+        </span>
+        <div class="col-25">
+          <label style="float: left;"> Name</label>
+</div>
+<div class="row">
+                                  <div style="width:45%;float: left;">
+                                    <input type="text" id="first_name" pattern="[a-zA-Z]{1,32}" class="form-control" name="first_name" placeholder="Enter first name" [(ngModel)]="model.first_name" #first_name = "ngModel" [ngClass]="{ 'is-invalid': (first_name.touched && first_name.invalid)||(first_name.dirty && first_name.invalid) }" [readonly]="view" required> 
+                                    <div *ngIf="edit">
+                                    <div *ngIf = "(first_name.touched && first_name.invalid)||(first_name.dirty && first_name.invalid)" class="error-msg">
+                                      <div *ngIf="first_name.errors.required"> Enter first name</div>
+                                      <div *ngIf="first_name.errors.pattern && !first_name.errors.required"> Invalid first name</div>
+                                    </div>
+                                    </div>                                  
+                                  </div>
+                                  <div style="width:45%;float: right;">
+                                    <input style="width: 90%;" type="text" id="last_name" pattern="[a-zA-Z]{1,32}" class="form-control" name="last_name" placeholder="Enter last name" [(ngModel)]="model.last_name" #last_name = "ngModel" [ngClass]="{ 'is-invalid': (last_name.touched && last_name.invalid) && (last_name.dirty && last_name.invalid) }" [readonly]="view" required> 
+                                    <div *ngIf="edit">
+                                    <div *ngIf = "(last_name.touched && last_name.invalid) || (last_name.dirty && last_name.invalid)" class="error-msg">
+                                      <div *ngIf="last_name.errors.required">Enter last name </div>
+                                      <div *ngIf="last_name.errors.pattern && !last_name.errors.required"> Invalid last name</div>
+                                    </div>            
+                                    </div>       
+                              </div>
+</div>
+<!--------------             Email                       ---->
+  <div class="col-25">
+      <label >Email</label>
+  </div>
+  <div class="col-75">
+  <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email Id"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': (email.touched && email.invalid) || (email.dirty && email.invalid) }" [readonly]="view" required>
+            <div *ngIf="edit">
+            <div *ngIf = "(email.touched && email.invalid) || (email.dirty && email.invalid)" class="error-msg">
+              <div *ngIf="email.errors.required"> Email Id should be required </div>
+              <div *ngIf="email.errors.pattern" > Enter Valid Email... </div>
+            </div>
+            </div>
+  </div>
+  <!--------------             Mobile Number                      ---->
+  <div class="col-25">
+    <label >Mobile</label>
+  </div>
+  <div class="col-75">
+        <input type="text" id="mobile_no" class="form-control" name="mobile_no" placeholder="Enter Mobile Number"  pattern = "[0-9]+" maxlength = "10" minlength="10" [(ngModel)] ="model.mobile_no" #mobile_no="ngModel" [ngClass]="{ 'is-invalid' :mobile_no.touched && mobile_no.invalid }" [readonly]="view" required>
+
+        <div *ngIf = "( mobile_no.touched && mobile_no.invalid ) && edit" class="invalid-feedback">
+            <div *ngIf="mobile_no.errors.required" > Mobile Number should be required </div>
+            <div *ngIf="mobile_no.errors.minlength || mobile_no.errors.maxlength" id="red"> Mobile Number should be 10 digit </div>    
+            <div *ngIf="mobile_no.errors.pattern" > Invalid Mobile Number </div>    
+
+        </div>
+  </div>
+  <!--------------             Address                                 ---->
+  <div class="col-25">
+      <label>Address</label>
+  </div>
+  <div class="col-75">
+      <input type="text" id="address" class="form-control" name="address" placeholder="Enter Address" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{'is-invalid':(address.touched && address.invalid) }" [readonly]="view" required>
+      <div *ngIf="edit">
+      <div *ngIf = "address.touched && address.invalid" class="error-msg">
+          <div *ngIf="address.errors.required"> Address should be required </div>
+      </div>
+      </div>
+  </div>
+  <!--               gender -->
+  <div class="col-25">
+    <label>Gender</label>
+</div>
+  <div class="col-75">
+    <input type="radio" value="male" name="gender" [ngModel]="model.gender" [disabled]="view"> Male
+    <input type="radio" value="female" name="gender" [ngModel]="model.gender" [disabled]="view" > Female
+    <br><br><br><br>
+  </div>
+   <!---------------- Submit   -->
+   <div *ngIf="edit">
+   <button type="submit" class="btn btn-primary"  style="float: left;" (click)="onSubmit()" 
+   [disabled]="!first_name.valid || !last_name.valid || !email.valid || !mobile_no.valid || !address.valid" data-dismiss="modal">
+   Submit</button>
+   </div>
+  </div>
+</div>
+</div>  

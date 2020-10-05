@@ -1,0 +1,113 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
+            <div class="login100-form validate-form"  >
+<!----------------------- Login logo                                  -------------->
+                <span class="login100-form-title p-b-33">
+                Login<br>
+                <img src="../../assets/log.png" alt="HTML5 Icon" style="width:68px;height:58px;border-radius: 110%;">
+                </span>
+            <!--------------             Name                      ---->
+            <div class="col-25">
+                      <label style="float: left;"> Name</label>
+            </div>
+            <div class="row">
+                                              <div style="width:45%;float: left;">
+                                                <input type="text" id="first_name" pattern="[a-zA-Z]{1,32}" class="form-control" name="first_name" placeholder="Enter first name" [(ngModel)]="model.first_name" #first_name = "ngModel" [ngClass]="{ 'is-invalid': (first_name.touched && first_name.invalid)||(first_name.dirty && first_name.invalid) }" required> 
+                                                <div *ngIf = "(first_name.touched && first_name.invalid)||(first_name.dirty && first_name.invalid)" class="error-msg">
+                                                  <div *ngIf="first_name.errors.required"> Enter first name</div>
+                                                  <div *ngIf="first_name.errors.pattern && !first_name.errors.required"> Invalid first name</div>
+                                                </div>                                              
+                                              </div>
+                                              <div style="width:45%;float: right;">
+                                                <input style="width: 90%;" type="text" id="last_name" pattern="[a-zA-Z]{1,32}" class="form-control" name="last_name" placeholder="Enter last name" [(ngModel)]="model.last_name" #last_name = "ngModel" [ngClass]="{ 'is-invalid': (last_name.touched && last_name.invalid) && (last_name.dirty && last_name.invalid) }" required> 
+                                                <div *ngIf = "(last_name.touched && last_name.invalid) || (last_name.dirty && last_name.invalid)" class="error-msg">
+                                                  <div *ngIf="last_name.errors.required">Enter last name </div>
+                                                  <div *ngIf="last_name.errors.pattern && !last_name.errors.required"> Invalid last name</div>
+                                                </div>                   
+                                          </div>
+            </div>
+          <!--------------             Email                       ---->
+              <div class="col-25">
+                  <label >Email</label>
+              </div>
+              <div class="col-75">
+              <input type="email" id="email" class="form-control" name="email" placeholder="Enter Email Id"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': (email.touched && email.invalid) || (email.dirty && email.invalid) || flag1 }" (click)="change()" required>
+                        <div *ngIf = "(email.touched && email.invalid) || (email.dirty && email.invalid)" class="error-msg">
+                          <div *ngIf="email.errors.required"> Email Id should be required </div>
+                          <div *ngIf="email.errors.pattern" > Enter Valid Email... </div>
+                        </div>
+                        <div *ngIf="flag1" class="error-msg">Email Already Exists</div>
+              </div>
+              <!--------------             Mobile Number                      ---->
+              <div class="col-25">
+                <label >Mobile</label>
+              </div>
+              <div class="col-75">
+                    <input type="text" id="mobile_no" class="form-control" name="mobile_no" placeholder="Enter Mobile Number"  pattern = "[0-9]+" maxlength = "10" minlength="10" [(ngModel)] ="model.mobile_no" #mobile_no="ngModel" [ngClass]="{ 'is-invalid' :mobile_no.touched && mobile_no.invalid }" required>
+                    <div *ngIf = "mobile_no.touched && mobile_no.invalid" class="invalid-feedback">
+                        <div *ngIf="mobile_no.errors.required" > Mobile Number should be required </div>
+                        <div *ngIf="mobile_no.errors.minlength || mobile_no.errors.maxlength" id="red"> Mobile Number should be 10 digit </div>    
+                        <div *ngIf="mobile_no.errors.pattern" > Invalid Mobile Number </div>    
+                    </div>
+              </div>
+              <!--------------             Address                                 ---->
+              <div class="col-25">
+                  <label>Address</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="address" class="form-control" name="address" placeholder="Enter Address" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{'is-invalid':address.touched && address.invalid }" required>
+                  <div *ngIf = "address.touched && address.invalid" class="error-msg">
+                      <div *ngIf="address.errors.required"> Address should be required </div>
+                  </div>
+              </div>
+              <!--------------             Password                      ---->              
+              <div class="col-25">
+                <label style="width: 60%;">Password</label>
+            </div>
+            <div class="col-75">
+              <input type="password" id="password" minlength="6" maxlength="15" pattern="^(?=(.*[a-zA-Z].*){1,})(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{6,15}$" class="form-control" name="password" placeholder="Enter Password"  [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid' : password.touched && password.invalid }" required>
+                  <div *ngIf = "password.touched && password.invalid" class="error-msg">
+                    <div *ngIf="password.errors.required" > Password is required </div>
+                    <div *ngIf="password.errors.minlength" > Minimum length should be 6 </div>
+                    <div *ngIf="password.errors.maxlength"> maximum length should be 15 </div>
+                    <div *ngIf="password.errors.pattern"> Password contains at least one special charcter,at least one digit.</div>
+                  </div>
+            </div>
+            <!--------------             Confirm password                     ---->
+            <div class="col-25">
+              <label >Confirm-Password</label>
+            </div>
+            <div class="col-75">
+                  <input type="password" id="confirm_password" class="form-control"(input)="pass($event.target.value)"  minlength="6" maxlength="12"  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" name="confirm_password"  placeholder="Confirm Password"  
+                    [(ngModel)]="model.confirm_password" #confirm_password = "ngModel" 
+                    [ngClass]="{'is-invalid' : confirm_password.touched && confirm_password.invalid && flag}" required>
+                  <div *ngIf="confirm_password.touched && !confirm_password.valid ">
+                      <div style="color: red; font-size: 12px;" *ngIf="flag">
+                            {{flag}}
+                          Password Mistmatch
+                      </div>
+                      <div *ngIf="confirm_password.errors.required" style="color: rgb(238, 50, 50); font-size: 12px;"> confirm password required </div>
+                  </div><br><br>
+              </div>
+            <!--------------             Select gender                      ---->
+              <div class="col-25">
+                <label>Gender</label>
+              </div>
+              <div class="col-75">
+                <input type="radio" value="male" name="gender" [ngModel]="model.gender" > Male
+                <input type="radio" value="female" name="gender" [ngModel]="model.gender" > Female
+                <br><br><br>
+            </div>
+        <!--------------             Submit button and go to homepage                     ---->
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="!first_name.valid 
+        || !last_name.valid || !email.valid || !mobile_no.valid || !address.valid || !password.valid || 
+        flag" >Register</button>
+        <!--------------             Go to home page                      ---->
+        <button style="float:right;" (click)="cancel()" class="btn btn-primary">Cancel</button><br><br>
+        <!-----------            Inner form ends                         ------------>
+      </div>
+  </div>
+  </div>
+  </div>
+  

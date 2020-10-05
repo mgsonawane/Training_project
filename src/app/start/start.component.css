@@ -1,0 +1,20 @@
+/* Error massage  */
+.err-msg {
+    color:rgb(201, 9, 41);
+    font-size: 12px;
+    padding: 5px;
+    text-align: left;
+  }
+  /*  text areas red border  */
+  .is-invalid{
+    border: 1px solid red!important;
+    border-radius: 5px;
+  }
+  /* Logo used below "Login"  */
+ .img{
+   width: 20%;
+   border-radius: 35%;
+ }
+ input{
+  background-color: rgba(228, 205, 205, 0.5);
+ }

@@ -7,3 +7,9 @@
   font-size: 15px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.igx-tabs-group {
+  padding: 8px;
+}
+.header-less-tabs.mat-tab-group .mat-tab-header {
+  display: none;
+}

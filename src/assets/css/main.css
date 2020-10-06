@@ -153,6 +153,7 @@ iframe {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y:auto;
 }
 
 .wrap-login100 {
@@ -710,8 +711,7 @@ hr.light {
 .ng2-wrap-login100 {
   width: 80%;
   border-radius: 5px;
-  overflow: hidden;
-  min-width: 80%;
+  overflow: auto;
   margin:-15px 0 auto auto;
   background-color: rgb(246, 242, 242);
   height: 100%;

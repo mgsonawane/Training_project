@@ -10,12 +10,19 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class StudentsComponent implements OnInit {
   local: LocalDataSource=new LocalDataSource;
-  limit:number=5;
-  val1:number;
+  limit:number=10;
   error:boolean=false;
+  selectedBanner:any;
+  banners: any[] = [
+    { name: 5},
+    {name: 10},
+    {name: 20},
+    {name: 25}
+];
   constructor(private userservice:UserService,private toastr:ToastrService) { }
 
   ngOnInit() {
+    this.selectedBanner=this.banners[1];
    this.userservice.getstudent().subscribe(data=>{
      this.local.load(Object.assign(data)) ;
    });
@@ -180,7 +187,7 @@ export class StudentsComponent implements OnInit {
             }
   }
   //         Delete record
-  
+
   onDeleteConfirm(event): void {
     if(window.confirm('Are you sure you want to delete record?')){
     this.userservice.deletestudent({'RollNo':event.data.RollNo ,'Name':event.data.Name,'Database':event.data.Database,
@@ -196,10 +203,9 @@ export class StudentsComponent implements OnInit {
   }
   // Pagination using select tag
   public change_limit(){ 
-     // event.confirm.resolve(this.settings) ;
-     this.local.setPaging(1, this.val1, true);
+     this.local.setPaging(1, this.selectedBanner['name'], true);
      this.settings = Object.assign({}, this.settings);
- 
+ //   console.log((this.selectedBanner['name']));
   }
   // Add new button 
   addRow() {
@@ -207,6 +213,7 @@ export class StudentsComponent implements OnInit {
       ".ng2-smart-actions-title-add a"
     );
     btnanadir.click.call(btnanadir);
-    }
+  }
+    
 
 }

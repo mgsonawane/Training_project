@@ -2,9 +2,11 @@
     <!--main container start-->
     <div class="limiter">
         <div class="container-login100">
-            
-            <div class="ng2-wrap-login100 p-l-15 p-r-15 p-t-75 p-b-50" style="float: right;">
-                <mat-tab-group>
+            <div class="ng2-wrap-login100 p-l-15 p-r-15 p-t-75 p-b-50">
+                <h1>Hello</h1>
+                <div style="display: inline-block;">
+                    <h1>Mangesh</h1>
+                <mat-tab-group style='display: inline-block;'>
                         <mat-tab label="Table">
                             <h3 style='color: #803ed8;'>
                                 Students<br>
@@ -12,11 +14,10 @@
     <!----------------------  Fill data  region     ------------------------------------>
                             <div style="float: right;">
                                 <span style="color:#007bff;font-size: medium;font-weight: 600;">Record limit </span>
-                                <select type='number' [(ngModel)]='val1'  (ngModelChange)="change_limit()" >
-                                    <option>5</option>
-                                    <option>10</option>   
-                                    <option>20</option>
-                                    <option>25</option>
+                                <select [(ngModel)]="selectedBanner" (change)="change_limit()">
+                                    <option *ngFor="let banner of banners" 
+                                    [ngValue]="banner">{{banner.name}}</option>
+                
                                 </select>
                             </div>
                             <ng2-smart-table  [settings]="settings" [source]="local"  
@@ -31,6 +32,7 @@
                         <mat-tab label="Graph">
                         </mat-tab>
                 </mat-tab-group>
+                </div>
         </div>
        
     </div>

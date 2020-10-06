@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
 import { HomeComponent } from './home/home.component';
 import {ToastrModule} from 'ngx-toastr';
+import { TabModule } from 'angular-tabs-component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { DemoComponent } from './demo/demo.component';
@@ -41,6 +42,7 @@ import { StudentsComponent } from './students/students.component';
   imports: [
     ReactiveFormsModule,
     BrowserModule,
+    TabModule,
     MatDialogModule,
     MatTabsModule,
     HttpClientModule,

@@ -125,5 +125,11 @@
 /* Material Tab */
 ::ng-deep .mat-tab-body-wrapper {
   scroll-margin-top: 2em;
-  
+
+}
+:host /deep/ ng2-smart-table .tbody {
+  display: none;
+}
+.header-less-tabs.mat-tab-group .mat-tab-header {
+  display: none;
 }

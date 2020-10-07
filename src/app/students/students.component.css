@@ -3,7 +3,7 @@
     border-color: initial;
     border-image: initial;
     border-width: 2px;
-    
+    float: right;
     display: table;
     border-spacing: 2px;
     border-color: grey; /* border of the big table*/
@@ -13,6 +13,7 @@
 :host /deep/ ng2-smart-table table > tbody > tr > td {
     box-sizing: border-box;
     border: 1px solid grey;
+    
 }
 
 /* headers grid color*/
@@ -132,4 +133,53 @@
 }
 .header-less-tabs.mat-tab-group .mat-tab-header {
   display: none;
+}
+:host ::ng-deep .mat-tab-group{
+  display: inline-block;
+}
+:host ::ng-deep .mat-tab-header{
+  display: inline-block;
+}
+
+/* Styles for the active tab label */
+:host ::ng-deep .mat-tab-label.mat-tab-label-active {
+
+  padding: 5px;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+/* Styles for the ink bar */
+:host ::ng-deep .mat-ink-bar {
+  background-color: green;
+}
+
+.md-tab.ng-scope.ng-isolate-scope.md-ink-ripple.md-active{
+  background-color:transparent;
+  color:white;
+  font-weight: 700;
+}
+
+.md-tab.ng-scope.ng-isolate-scope.md-ink-ripple{
+background-color:transparent;
+color:white;
+font-weight: 700;
+}
+
+
+
+.mat-tab-label:active{
+min-width: 25px !important;
+padding: 5px;
+   background-color:transparent;
+    color:white;
+    font-weight: 700;
+}
+
+.mat-tab-label:selected{
+min-width: 25px !important;
+padding: 5px;
+   background-color:transparent;
+    color:white;
+    font-weight: 700;
 }

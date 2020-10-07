@@ -11,6 +11,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 export class StudentsComponent implements OnInit {
   local: LocalDataSource=new LocalDataSource;
   limit:number=10;
+  tablee:boolean=true;
   error:boolean=false;
   selectedBanner:any;
   banners: any[] = [
@@ -32,36 +33,38 @@ export class StudentsComponent implements OnInit {
     columns: {
       RollNo: {
         title: 'RollNo',
-        filter: true,
+       filter:false,
         sort : true,
-        width: '20px' ,
+        width: '40px' ,
         type: 'number',
         hidden:true
       },
       Name: {
         display:false,
         title: 'Name',
-        filter: true,
+        width: '60px' ,
+       filter:false,
         type: 'string'
       },
       Database: {
         title: 'Database',
-        filter: true,
+       filter:false,
+       width: '60px' ,
         type: 'number'
       },  
       Simulation: {
         title: 'Simulation',
-        filter: true,
+       filter:false,
         type: 'number'
       },
       Angular: {
         title: 'Angular',
-        filter: true,
+       filter:false,
         type: 'number'
       },
       Total: {
         title: 'Total',
-        filter: true,
+       filter:false,
         addable:false,
         type: 'number',
         editable:false
@@ -69,7 +72,7 @@ export class StudentsComponent implements OnInit {
       Percentage: {
         title: 'Percentage',
         addable:false,
-        filter: true,
+       filter:false,
         editable:false,
         type: 'number'
       }
@@ -95,45 +98,12 @@ export class StudentsComponent implements OnInit {
        cancelButtonContent: '<i class="fa fa-window-close"></i>'
       },
       actions: {
+        //width:'30px'
         //add: false, //as an example
        
       }
   };
-  //Global Search !used
-  onSearch(query: string = '') {
-    this.local.setFilter([
-      // fields we want to include in the search
-      {
-        field:'RollNo',
-        search: query
-      },
-      {
-        field: 'Name',
-        search: query
-      },
-      {
-        field: 'Database',
-        search: query
-      },
-      {
-        field: 'Simulation',
-        search: query
-      },
-      {
-        field: 'Angular',
-        search: query
-      },
-      {
-        field: 'Total',
-        search: query
-      },
-      
-      {
-        field: 'Percentage',
-        search: query
-      }
-    ], true);
-  }
+  
  //          Add new record or column
   onCreateConfirm(event):void { 
     if (event.newData.RollNo && event.newData.Name && event.newData.Database && event.newData.Simulation && 
@@ -214,6 +184,8 @@ export class StudentsComponent implements OnInit {
     );
     btnanadir.click.call(btnanadir);
   }
-    
+ totable()   {
+   this.tablee=true;
+ }
 
 }

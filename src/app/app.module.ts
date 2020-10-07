@@ -42,7 +42,6 @@ import { StudentsComponent } from './students/students.component';
   imports: [
     ReactiveFormsModule,
     BrowserModule,
-    TabModule,
     MatDialogModule,
     MatTabsModule,
     HttpClientModule,
